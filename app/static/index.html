@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Learning Intelligence Tool</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Learning Intelligence Tool</h1>
+            <p>Predict Student Success & Analyze Course Difficulty</p>
+        </header>
+
+        <main>
+            <!-- Upload Section -->
+            <section class="card upload-section">
+                <h2>Batch Analysis</h2>
+                <p>Upload student data (CSV) to generate predictions and risk analysis.</p>
+                <div class="upload-box" id="drop-zone">
+                    <input type="file" id="file-input" accept=".csv" hidden>
+                    <label for="file-input" class="btn">Choose File</label>
+                    <span id="file-name">No file chosen</span>
+                </div>
+                <button id="analyze-btn" class="btn primary" disabled>Analyze Data</button>
+            </section>
+
+            <!-- Dashboard Section (Hidden initially) -->
+            <div id="dashboard" class="hidden">
+                <!-- Summary Cards -->
+                <div class="stats-grid">
+                    <div class="card stat-card">
+                        <h3>Total Students</h3>
+                        <p id="total-students">-</p>
+                    </div>
+                    <div class="card stat-card">
+                        <h3>At Risk (High)</h3>
+                        <p id="high-risk-count" class="danger">-</p>
+                    </div>
+                    <div class="card stat-card">
+                        <h3>Avg Completion Prob</h3>
+                        <p id="avg-prob">-</p>
+                    </div>
+                </div>
+
+                <!-- Charts -->
+                <div class="charts-grid">
+                    <div class="card chart-card">
+                        <h3>Risk Distribution</h3>
+                        <canvas id="riskChart"></canvas>
+                    </div>
+                    <div class="card chart-card">
+                        <h3>Chapter Difficulty Analysis</h3>
+                        <canvas id="difficultyChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Detailed Table -->
+                <section class="card table-section">
+                    <h3>High Risk Students</h3>
+                    <div class="table-wrapper">
+                        <table id="results-table">
+                            <thead>
+                                <tr>
+                                    <th>Student ID</th>
+                                    <th>Completion Prob</th>
+                                    <th>Risk Level</th>
+                                    <th>Prediction</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Rows injected by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
